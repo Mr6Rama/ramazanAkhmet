@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 250 250 248;
+  --fg: 12 16 22;
+  --muted: 87 96 109;
+  --line: 223 228 235;
+  --accent: 29 78 216;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: rgb(var(--fg));
+  background: rgb(var(--bg));
+  text-rendering: geometricPrecision;
+}
+
+* {
+  border-color: rgb(var(--line));
+}
+
+::selection {
+  background: rgb(var(--accent));
+  color: white;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.noise {
+  background-image:
+    linear-gradient(rgba(12, 16, 22, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(12, 16, 22, 0.025) 1px, transparent 1px);
+  background-size: 28px 28px;
+}

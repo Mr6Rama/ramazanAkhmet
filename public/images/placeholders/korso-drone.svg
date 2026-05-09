@@ -1,0 +1,13 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#F8FAFC"/>
+  <rect x="72" y="72" width="1056" height="756" rx="32" fill="#E2E8F0"/>
+  <circle cx="600" cy="420" r="116" fill="#CBD5E1"/>
+  <path d="M600 304V536" stroke="#94A3B8" stroke-width="22" stroke-linecap="round"/>
+  <path d="M484 420H716" stroke="#94A3B8" stroke-width="22" stroke-linecap="round"/>
+  <circle cx="488" cy="312" r="30" fill="#94A3B8"/>
+  <circle cx="712" cy="312" r="30" fill="#94A3B8"/>
+  <circle cx="488" cy="528" r="30" fill="#94A3B8"/>
+  <circle cx="712" cy="528" r="30" fill="#94A3B8"/>
+  <text x="600" y="690" text-anchor="middle" fill="#334155" font-family="Arial, sans-serif" font-size="42" font-weight="700">KORSO drone placeholder</text>
+  <text x="600" y="742" text-anchor="middle" fill="#64748B" font-family="Arial, sans-serif" font-size="24">Drone / agritech / robotics image</text>
+</svg>

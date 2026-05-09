@@ -1,0 +1,12 @@
+import { dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+
+const outputFileTracingRoot = dirname(fileURLToPath(import.meta.url));
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  outputFileTracingRoot,
+};
+
+export default nextConfig;

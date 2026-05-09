@@ -1,0 +1,11 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="900" rx="48" fill="#F8FAFC"/>
+  <rect x="72" y="72" width="1056" height="756" rx="32" fill="#E2E8F0"/>
+  <path d="M240 610L520 310L720 470L960 250" stroke="#94A3B8" stroke-width="28" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="240" cy="610" r="24" fill="#64748B"/>
+  <circle cx="520" cy="310" r="24" fill="#64748B"/>
+  <circle cx="720" cy="470" r="24" fill="#64748B"/>
+  <circle cx="960" cy="250" r="24" fill="#64748B"/>
+  <text x="600" y="690" text-anchor="middle" fill="#334155" font-family="Arial, sans-serif" font-size="42" font-weight="700">Astana Innovation Forum placeholder</text>
+  <text x="600" y="742" text-anchor="middle" fill="#64748B" font-family="Arial, sans-serif" font-size="24">Forum / stage / pitch photo</text>
+</svg>
