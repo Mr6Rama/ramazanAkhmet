@@ -33,3 +33,40 @@ npm run build
 1. Update `NEXT_PUBLIC_SITE_URL` to the final Vercel or custom domain.
 2. Redeploy.
 3. Test the Open Graph preview on LinkedIn, Telegram, WhatsApp, and X/Twitter.
+
+## Local production test
+
+```bash
+npm install
+npm run build
+npm run start
+```
+
+Then open:
+
+```text
+http://localhost:3000
+```
+
+## Vercel CLI troubleshooting
+
+```bash
+npm i -g vercel
+vercel login
+vercel link
+vercel --prod
+```
+
+If the deployment URL works but `ramazanakhmet.vercel.app` does not, set the alias:
+
+```bash
+vercel alias set <DEPLOYMENT_URL> ramazanakhmet.vercel.app
+```
+
+Useful checks:
+
+```bash
+vercel domains ls
+vercel project ls
+vercel ls
+```
