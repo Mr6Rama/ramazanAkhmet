@@ -102,7 +102,6 @@ export type ProfileContent = {
     description: string;
     email: string;
     linkedin: string;
-    striveai: string;
     resumeHref: string;
   };
 };
@@ -111,14 +110,15 @@ const english: ProfileContent = {
   seo: {
     title: "Ramazan Akhmet - 16 y.o. Founder building AI & Startup Ecosystems",
     description:
-      "Ramazan Akhmet is a 16-year-old founder from Kazakhstan building StriveAI, Society Association, KORSO, and AI robotics projects across startup ecosystems, agritech, and youth innovation.",
+      "Ramazan Akhmet is a 16-year-old founder from Kazakhstan building Neuralese, Society Association, KORSO, and AI robotics projects across startup ecosystems, AI education, agritech, and youth innovation.",
     keywords: [
       "Ramazan Akhmet",
       "Kazakhstan founder",
-      "StriveAI",
+      "Neuralese",
       "Society Association",
       "KORSO",
       "AI robotics",
+      "AI education",
       "agritech",
       "youth entrepreneurship",
       "Central Asia startups",
@@ -131,21 +131,20 @@ const english: ProfileContent = {
     name: "Ramazan Akhmet",
     headline: "16-year-old founder building AI products and startup ecosystems in Central Asia.",
     subheadline:
-      "I build at the intersection of AI, robotics, agritech, and youth entrepreneurship. Founder & Product Lead at StriveAI, Founder & CEO of Society Association, and former Co-founder & Head of Strategy at Project KORSO.",
+      "I build at the intersection of AI, education, agritech, and youth entrepreneurship. Co-Founder & COO at Neuralese, Founder & CEO of Society Association, and former Co-founder & Head of Strategy at Project KORSO.",
     location: "Kazakhstan",
     positioning: "16 y.o. Founder | AI & Startup Ecosystems | Raised $10K+",
   },
   primaryLinks: [
     { label: "Email", href: "mailto:ramazan2909.com@gmail.com" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/ramazan-a-97a686334/" },
-    { label: "Try StriveAI", href: "https://striveai-x7m4.onrender.com" },
   ],
   metrics: [
     { value: "$10K+ / 4M+ KZT", label: "funding raised or attracted" },
     { value: "53", label: "team members led" },
     { value: "5+", label: "large-scale events organized" },
     { value: "1,353+", label: "participants reached" },
-    { value: "50+", label: "founder / user meetings for StriveAI" },
+    { value: "2.6×", label: "AI understanding improvement (Neuralese independent testing)" },
     { value: "69", label: "farmers and livestock owners researched for KORSO" },
     { value: "6,700+", label: "images in the YOLO livestock dataset" },
     { value: "~96%", label: "KORSO detection accuracy" },
@@ -155,32 +154,33 @@ const english: ProfileContent = {
     title: "About",
     description: [
       "Ramazan Akhmet is a 16-year-old founder and product builder from Kazakhstan working across AI, robotics, agritech, and startup communities. He has built Society Association into a 53-member student innovation ecosystem, attracted $10K+ / 4M+ KZT in investment and prize funding, and reached 1,353+ participants through large-scale startup and technology events.",
-      "He is currently building StriveAI, an AI execution platform for early founders, validated through 50+ founder and user meetings. His previous work includes Project KORSO, an autonomous AI-powered drone platform for sustainable agriculture, and AI robotics projects with Fizmat Robotics / FIRST.",
+      "He is currently co-founding Neuralese, a no-code platform where students learn AI by building it — designing and training real neural networks visually instead of watching tutorials. His previous work includes Project KORSO, an autonomous AI-powered drone platform for sustainable agriculture, and AI robotics projects with Fizmat Robotics / FIRST.",
     ],
   },
   now: {
-    title: "Currently building StriveAI",
+    title: "Currently building Neuralese",
     description:
-      "StriveAI is an AI execution platform for early founders. It turns goals into milestone-based roadmaps, daily actions, progress visibility, and real-time plan adaptation.",
+      "Neuralese is a no-code platform where students learn AI by building it — assembling datasets, designing neural networks visually, and testing models, instead of watching tutorials or writing code.",
     bullets: [
-      "Building an AI execution platform for early founders.",
-      "Validated the problem through 50+ founder/user meetings and meetups.",
-      "Focused on scattered planning, weak accountability, and inconsistent execution.",
-      "Led product discovery, MVP iteration, pitch narrative, early feedback loops, and roadmap prioritization.",
+      "Co-founded Neuralese as COO alongside two CTOs (backend engineering and AI engineering).",
+      "Leading operations, go-to-market strategy, and partnerships across three product tiers: Personal, School, and Network.",
+      "Building an offline-capable version for rural schools without reliable internet access.",
+      "Independent pedagogical testing shows a 2.6× improvement in AI understanding versus passive, video-based learning.",
     ],
   },
   experience: [
     {
-      role: "Founder & Chief Executive Officer",
-      org: "StriveAI",
+      role: "Co-Founder & COO",
+      org: "Neuralese",
       date: "2026 – Present",
       location: "Kazakhstan",
       summary:
-        "Building an AI execution platform for early founders that turns goals into milestone-based roadmaps, daily actions, progress visibility, and real-time plan adaptation.",
+        "Co-founded Neuralese, a no-code platform where students learn AI by building it — assembling datasets, designing neural networks visually, and testing models instead of watching tutorials.",
       bullets: [
-        "Conducted 50+ founder/user meetings and meetups to validate execution problems.",
-        "Led product discovery, MVP iteration, pitch narrative, early feedback loops, and roadmap prioritization.",
-        "Focused on helping early founders move from planning to consistent execution.",
+        "Co-founded Neuralese alongside two CTOs (backend engineering and AI engineering); leading operations, go-to-market strategy, and partnerships.",
+        "Product spans three tiers — Personal, School, and Network — with an offline-capable version built for rural schools without reliable internet access.",
+        "Independent pedagogical testing shows a 2.6× improvement in AI understanding and skill development versus passive, video-based learning.",
+        "Positioned against simplified black-box tools (e.g. Teachable Machine, ML Blocks) by letting students construct models layer-by-layer with real understanding.",
       ],
     },
     {
@@ -232,17 +232,16 @@ const english: ProfileContent = {
   ],
   projects: [
     {
-      title: "StriveAI",
-      category: "AI / Founder Tools / Productivity",
+      // TODO: replace placeholder with real Neuralese logo when available
+      title: "Neuralese",
+      category: "AI Education / No-Code / Ed-Tech",
       description:
-        "An AI execution platform for early founders that turns goals into milestone-based roadmaps, daily actions, progress visibility, and real-time plan adaptation.",
+        "A no-code platform where students learn AI by building it — assembling datasets, designing neural networks visually, and testing models. Proven 2.6× improvement in AI understanding versus passive video-based learning.",
       highlights: [
-        "50+ founder/user meetings",
-        "MVP iteration and early feedback loops",
-        "Built around accountability, execution, and adaptive planning",
-      ],
-      links: [
-        { label: "Open StriveAI", href: "https://striveai-x7m4.onrender.com" },
+        "Three product tiers: Personal, School, Network",
+        "Offline-capable version for rural schools",
+        "2.6× AI understanding improvement in independent testing",
+        "Positioned against Teachable Machine and ML Blocks",
       ],
     },
     {
@@ -468,7 +467,6 @@ const english: ProfileContent = {
       "Use this link when you want the fastest read on Ramazan: who he is, what he has built, and why he is credible.",
     email: "ramazan2909.com@gmail.com",
     linkedin: "https://www.linkedin.com/in/ramazan-a-97a686334/",
-    striveai: "https://striveai-x7m4.onrender.com",
     resumeHref: "/Ramazan-Akhmet-Resume.pdf",
   },
 };

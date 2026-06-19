@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { IBM_Plex_Mono, IBM_Plex_Sans, Space_Grotesk } from "next/font/google";
+import { IBM_Plex_Mono, Inter, Space_Grotesk } from "next/font/google";
 import { getProfile } from "../data/profile";
 import "./globals.css";
 
@@ -9,7 +9,7 @@ const display = Space_Grotesk({
   variable: "--font-display",
 });
 
-const body = IBM_Plex_Sans({
+const body = Inter({
   subsets: ["latin"],
   weight: ["400", "500", "600"],
   variable: "--font-body",

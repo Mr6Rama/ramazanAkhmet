@@ -12,28 +12,29 @@ export default function Home() {
     <main className="relative" id="top">
       <div className="noise absolute inset-0 -z-10 opacity-[0.22]" />
 
-      <div className="sticky top-0 z-30 border-b border-line bg-[rgba(250,250,248,0.92)] backdrop-blur">
+      {/* Sticky navbar with Apple-style glassmorphism */}
+      <div className="sticky top-0 z-30 border-b border-line/60 bg-background/[0.88] backdrop-blur-xl backdrop-saturate-[180%] transition-shadow duration-300">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 sm:px-6 lg:px-8">
           <a href="#top" className="font-display text-sm tracking-tight text-foreground sm:text-base">
             Ramazan Akhmet
           </a>
           <nav className="flex items-center gap-4 overflow-x-auto text-[11px] uppercase tracking-[0.22em] text-muted sm:gap-6">
-            <a href="#about" className="transition hover:text-foreground">
+            <a href="#about" className="transition-colors duration-200 hover:text-foreground">
               About
             </a>
-            <a href="#now" className="transition hover:text-foreground">
+            <a href="#now" className="transition-colors duration-200 hover:text-foreground">
               Now
             </a>
-            <a href="#experience" className="transition hover:text-foreground">
+            <a href="#experience" className="transition-colors duration-200 hover:text-foreground">
               Work
             </a>
-            <a href="#projects" className="transition hover:text-foreground">
+            <a href="#projects" className="transition-colors duration-200 hover:text-foreground">
               Projects
             </a>
-            <a href="#awards" className="transition hover:text-foreground">
+            <a href="#awards" className="transition-colors duration-200 hover:text-foreground">
               Awards
             </a>
-            <a href="#contact" className="transition hover:text-foreground">
+            <a href="#contact" className="transition-colors duration-200 hover:text-foreground">
               Contact
             </a>
           </nav>
@@ -49,12 +50,12 @@ export default function Home() {
               </p>
             </Reveal>
             <Reveal delay={0.04}>
-              <h1 className="mt-4 text-5xl font-display leading-[0.9] tracking-tight text-foreground text-balance sm:text-6xl lg:text-7xl">
+              <h1 className="mt-4 font-display text-5xl leading-[0.9] tracking-[-0.02em] text-foreground text-balance sm:text-6xl lg:text-7xl xl:text-[5.5rem]">
                 {copy.hero.headline}
               </h1>
             </Reveal>
             <Reveal delay={0.08}>
-              <p className="mt-5 max-w-2xl text-base leading-7 text-muted text-balance sm:text-lg lg:text-xl">
+              <p className="mt-6 max-w-2xl text-lg leading-[1.6] text-muted text-balance sm:text-xl">
                 {copy.hero.subheadline}
               </p>
             </Reveal>
@@ -63,7 +64,7 @@ export default function Home() {
               <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
                 <a
                   href="#contact"
-                  className="inline-flex items-center justify-center rounded-full bg-foreground px-5 py-3 text-sm font-medium text-white transition duration-200 hover:-translate-y-0.5 hover:bg-foreground/90"
+                  className="inline-flex items-center justify-center rounded-full bg-foreground px-5 py-3 text-sm font-medium text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-foreground/90"
                 >
                   Get in touch
                 </a>
@@ -71,23 +72,15 @@ export default function Home() {
                   href={copy.contact.linkedin}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-full border border-line bg-white px-5 py-3 text-sm font-medium text-foreground transition duration-200 hover:-translate-y-0.5 hover:border-foreground/30"
+                  className="inline-flex items-center justify-center rounded-full border border-line bg-white px-5 py-3 text-sm font-medium text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-foreground/30"
                 >
                   View LinkedIn
-                </a>
-                <a
-                  href={copy.contact.striveai}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center justify-center rounded-full border border-line bg-white px-5 py-3 text-sm font-medium text-foreground transition duration-200 hover:-translate-y-0.5 hover:border-foreground/30"
-                >
-                  Try StriveAI
                 </a>
                 <a
                   href={copy.contact.resumeHref}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center rounded-full border border-line bg-white px-5 py-3 text-sm font-medium text-foreground transition duration-200 hover:-translate-y-0.5 hover:border-foreground/30"
+                  className="inline-flex items-center justify-center rounded-full border border-line bg-white px-5 py-3 text-sm font-medium text-foreground transition-all duration-200 hover:-translate-y-0.5 hover:border-foreground/30"
                 >
                   Download resume
                 </a>
@@ -100,7 +93,10 @@ export default function Home() {
             <Reveal delay={0.14}>
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 {copy.metrics.slice(0, 4).map((metric) => (
-                  <div key={metric.label} className="rounded-2xl border border-line bg-white p-4">
+                  <div
+                    key={metric.label}
+                    className="rounded-2xl border border-line bg-white p-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card hover:border-foreground/15"
+                  >
                     <p className="font-display text-[1.75rem] tracking-tight text-foreground sm:text-[2rem]">
                       {metric.value}
                     </p>
@@ -174,7 +170,7 @@ export default function Home() {
                 </p>
               ))}
             </div>
-            <div className="rounded-2xl border border-line bg-white p-5">
+            <div className="rounded-2xl border border-line bg-white p-5 transition-all duration-300 hover:shadow-soft hover:border-foreground/20">
               <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
                 Positioning
               </p>
@@ -188,7 +184,7 @@ export default function Home() {
                     href={link.href}
                     target={link.href.startsWith("http") ? "_blank" : undefined}
                     rel={link.href.startsWith("http") ? "noreferrer" : undefined}
-                    className="rounded-full border border-line bg-background px-3 py-2 text-xs uppercase tracking-[0.18em] text-foreground transition hover:border-foreground/30"
+                    className="rounded-full border border-line bg-background px-3 py-2 text-xs uppercase tracking-[0.18em] text-foreground transition-all duration-200 hover:border-foreground/30"
                   >
                     {link.label}
                   </a>
@@ -216,22 +212,13 @@ export default function Home() {
                 ))}
               </ul>
             </div>
-            <div className="rounded-2xl border border-line bg-white p-5 sm:p-6">
+            <div className="rounded-2xl border border-line bg-white p-5 sm:p-6 transition-all duration-300 hover:shadow-soft hover:border-foreground/20">
               <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
                 Current focus
               </p>
               <p className="mt-3 text-sm leading-7 text-muted">
-                StriveAI is the current priority. It is being shaped through founder interviews,
-                early MVP iteration, and clear execution-focused product decisions.
+                {copy.now.description}
               </p>
-              <a
-                href={copy.contact.striveai}
-                target="_blank"
-                rel="noreferrer"
-                className="mt-5 inline-flex items-center justify-center rounded-full bg-foreground px-5 py-3 text-sm font-medium text-white transition duration-200 hover:-translate-y-0.5 hover:bg-foreground/90"
-              >
-                Try StriveAI
-              </a>
             </div>
           </div>
         </Section>
@@ -245,7 +232,10 @@ export default function Home() {
         >
           <div className="space-y-3">
             {copy.experience.map((item) => (
-              <details key={item.org} className="group rounded-2xl border border-line bg-white">
+              <details
+                key={item.org}
+                className="group rounded-2xl border border-line bg-white transition-all duration-200 hover:border-foreground/20 hover:shadow-soft"
+              >
                 <summary className="flex cursor-pointer list-none items-start gap-4 px-5 py-4 marker:hidden">
                   <span className="mt-1 w-24 shrink-0 font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
                     {item.date}
@@ -261,7 +251,7 @@ export default function Home() {
                       {item.summary}
                     </span>
                   </span>
-                  <span className="mt-1 font-mono text-xs uppercase tracking-[0.2em] text-muted transition group-open:rotate-45">
+                  <span className="mt-1 font-mono text-xs uppercase tracking-[0.2em] text-muted transition-transform duration-200 group-open:rotate-45">
                     +
                   </span>
                 </summary>
@@ -313,7 +303,10 @@ export default function Home() {
         >
           <div className="grid gap-4 lg:grid-cols-2">
             {copy.projects.map((project) => (
-              <article key={project.title} className="rounded-2xl border border-line bg-white p-5">
+              <article
+                key={project.title}
+                className="rounded-2xl border border-line bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card hover:border-foreground/10"
+              >
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>
                     <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
@@ -343,7 +336,7 @@ export default function Home() {
                         href={link.href}
                         target="_blank"
                         rel="noreferrer"
-                        className="rounded-full border border-line bg-white px-3 py-2 text-xs uppercase tracking-[0.18em] text-foreground transition hover:border-foreground/30"
+                        className="rounded-full border border-line bg-white px-3 py-2 text-xs uppercase tracking-[0.18em] text-foreground transition-all duration-200 hover:border-foreground/30"
                       >
                         {link.label}
                       </a>
@@ -365,7 +358,10 @@ export default function Home() {
           <StatGrid items={copy.traction.metrics.slice(0, 4)} />
           <div className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {copy.traction.metrics.slice(4).map((metric) => (
-              <div key={metric.label} className="rounded-2xl border border-line bg-white p-4">
+              <div
+                key={metric.label}
+                className="rounded-2xl border border-line bg-white p-4 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card hover:border-foreground/15"
+              >
                 <p className="font-display text-2xl tracking-tight text-foreground">{metric.value}</p>
                 <p className="mt-2 text-sm leading-6 text-muted">{metric.label}</p>
               </div>
@@ -382,7 +378,10 @@ export default function Home() {
         >
           <div className="grid gap-4 lg:grid-cols-3">
             {copy.awards.map((group) => (
-              <article key={group.category} className="rounded-2xl border border-line bg-white p-5">
+              <article
+                key={group.category}
+                className="rounded-2xl border border-line bg-white p-5 transition-all duration-300 hover:shadow-soft hover:border-foreground/15"
+              >
                 <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
                   {group.category}
                 </p>
@@ -432,7 +431,10 @@ export default function Home() {
         >
           <div className="grid gap-4 lg:grid-cols-2">
             {copy.skills.map((group) => (
-              <article key={group.category} className="rounded-2xl border border-line bg-white p-5">
+              <article
+                key={group.category}
+                className="rounded-2xl border border-line bg-white p-5 transition-all duration-300 hover:shadow-soft hover:border-foreground/15"
+              >
                 <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
                   {group.category}
                 </p>
@@ -469,7 +471,7 @@ export default function Home() {
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="rounded-full border border-line bg-background px-3 py-2 text-sm text-foreground transition hover:border-foreground/30"
+                  className="rounded-full border border-line bg-background px-3 py-2 text-sm text-foreground transition-all duration-200 hover:border-foreground/30"
                 >
                   {link.label}
                 </a>
@@ -518,7 +520,6 @@ export default function Home() {
             resumeHref={copy.contact.resumeHref}
             links={[
               { label: "View LinkedIn", href: copy.contact.linkedin },
-              { label: "Try StriveAI", href: copy.contact.striveai },
             ]}
           />
         </section>
