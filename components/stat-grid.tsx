@@ -6,7 +6,7 @@ export function StatGrid({ items }: { items: Stat[] }) {
     <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
       {items.map((item, index) => (
         <Reveal key={item.label} delay={0.02 * index}>
-          <div className="rounded-2xl border border-line bg-white p-4 sm:p-5">
+          <div className="rounded-2xl border border-line bg-white p-4 sm:p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card hover:border-foreground/15">
             <div className="font-display text-[1.75rem] tracking-tight text-foreground sm:text-[2rem]">
               {item.value}
             </div>
