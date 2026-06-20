@@ -9,7 +9,7 @@
 - No broken resume link
 - All CTAs work
 - LinkedIn opens correctly
-- StriveAI link opens correctly
+- Project links (Instagram, etc.) open correctly
 - Email link uses `mailto:`
 - Mobile layout tested
 - Metadata added

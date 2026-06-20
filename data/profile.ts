@@ -27,12 +27,43 @@ export type TimelineItem = {
   description: string;
 };
 
-export type ProjectItem = {
+// A single image slot. `src` is the expected path under /public. The
+// <MediaSlot> component checks whether the file actually exists and either
+// renders it or shows a styled "coming soon" placeholder — so dropping a
+// correctly-named file into /public/images/... makes the photo appear with
+// no code changes.
+export type MediaSlot = {
+  src?: string;
+  alt: string;
+  aspectRatio: string; // CSS aspect-ratio, e.g. "16/10", "3/2", "1/1"
+  caption?: string;
+};
+
+// Award / recognition, shown as a compact badge (label = placement, detail = event).
+export type Achievement = {
+  label: string;
+  detail: string;
+};
+
+export type RelatedProject = {
   title: string;
-  category: string;
-  description: string;
-  highlights: string[];
-  links?: Link[];
+  oneLiner: string;
+  bullets: string[];
+  media: MediaSlot[];
+};
+
+// Unified shape used for every project card. No special cases per project.
+export type ProjectCardItem = {
+  title: string;
+  role: string;
+  period: string;
+  oneLiner: string;
+  achievements: Achievement[];
+  metrics: Metric[];
+  bullets: string[];
+  media: MediaSlot[];
+  links: Link[];
+  related?: RelatedProject;
 };
 
 export type ListItem = {
@@ -44,11 +75,6 @@ export type EventItem = {
   title: string;
   details: string;
   stats: string[];
-};
-
-export type AwardGroup = {
-  category: string;
-  items: string[];
 };
 
 export type SkillGroup = {
@@ -82,14 +108,15 @@ export type ProfileContent = {
     bullets: string[];
   };
   experience: ExperienceItem[];
-  projects: ProjectItem[];
+  projectCards: ProjectCardItem[];
   traction: {
     title: string;
     description: string;
     metrics: Metric[];
   };
   events: EventItem[];
-  awards: AwardGroup[];
+  recognition: Achievement[];
+  recognitionMedia: MediaSlot[];
   skills: SkillGroup[];
   partners: string[];
   socialLinks: Link[];
@@ -230,31 +257,54 @@ const english: ProfileContent = {
       ],
     },
   ],
-  projects: [
+  projectCards: [
     {
-      // TODO: replace placeholder with real Neuralese logo when available
       title: "Neuralese",
-      category: "AI Education / No-Code / Ed-Tech",
-      description:
-        "A no-code platform where students learn AI by building it — assembling datasets, designing neural networks visually, and testing models. Proven 2.6× improvement in AI understanding versus passive video-based learning.",
-      highlights: [
-        "Three product tiers: Personal, School, Network",
-        "Offline-capable version for rural schools",
-        "2.6× AI understanding improvement in independent testing",
-        "Positioned against Teachable Machine and ML Blocks",
+      role: "Co-Founder & COO",
+      period: "2026 – Present",
+      oneLiner:
+        "A no-code platform where students learn AI by building real neural networks, visually.",
+      achievements: [
+        { label: "Gold Medal", detail: "InfoMatrix AI Project Competition (20+ countries)" },
+        { label: "Special Award", detail: "Regeneron ISEF — International Science & Engineering Fair, USA" },
+        { label: "Gold Medal", detail: "Republican Science & Engineering Project Competition (Kazakhstan)" },
       ],
+      metrics: [
+        { value: "2.6×", label: "improvement in AI understanding vs. passive learning" },
+        { value: "85%", label: "gross margin across 3 product tiers" },
+      ],
+      bullets: [
+        "Co-founded a 3-tier product (Personal / School / Network) — including a fully offline mode built for rural schools.",
+        "Lead operations, GTM, and partnerships alongside two CTOs (backend & AI engineering).",
+      ],
+      media: [
+        { src: "/images/logos/neuralese.svg", alt: "Neuralese logo", aspectRatio: "1/1", caption: "Neuralese" },
+        { src: "/images/projects/neuralese-1.jpg", alt: "Neuralese product screenshot — visual model builder", aspectRatio: "16/10", caption: "Product — visual model builder" },
+        { src: "/images/projects/neuralese-2.jpg", alt: "Neuralese product screenshot — dataset and training", aspectRatio: "16/10", caption: "Product — datasets & training" },
+      ],
+      links: [],
     },
     {
       title: "Society Association",
-      category: "Startup Ecosystem / Youth Innovation",
-      description:
-        "An invitation-style student innovation ecosystem connecting high school students with startups, technology, project-based learning, and real startup ecosystem actors.",
-      highlights: [
-        "53 active members",
-        "5 departments",
-        "5 large-scale events in first 4 months",
-        "1,353+ participants reached",
-        "4M+ KZT attracted in funding and prize pools",
+      role: "Founder & CEO",
+      period: "September 2025 – Present",
+      oneLiner:
+        "A student-led innovation community connecting high schoolers with entrepreneurship, tech, and project-based learning.",
+      achievements: [],
+      metrics: [
+        { value: "53", label: "active members across 5 departments" },
+        { value: "1,353+", label: "participants reached" },
+        { value: "4M+ ₸", label: "investment & prize funding raised" },
+        { value: "5", label: "large-scale events in 4 months" },
+      ],
+      bullets: [
+        "Led strategy, partnerships, and team structure across marketing, operations, IT, finance, and events.",
+        "Partnered with Silkroad Innovation Hub, Nazarbayev University, ISSAI, IT Park Uzbekistan, Alem Techfest, and others.",
+      ],
+      media: [
+        { src: "/images/logos/society.svg", alt: "Society Association logo", aspectRatio: "1/1", caption: "Society Association" },
+        { src: "/images/events/brojectum-birlik.jpg", alt: "Brojectum x Birlik sports hackathon", aspectRatio: "3/2", caption: "Brojectum x Birlik — 100+ participants, 100,000 ₸ prize pool" },
+        { src: "/images/events/astana-innovation-forum.jpg", alt: "Astana Innovation Forum", aspectRatio: "3/2", caption: "Astana Innovation Forum — 560 participants, 130 teams, 1,000,000 ₸ prize pool" },
       ],
       links: [
         {
@@ -264,66 +314,43 @@ const english: ProfileContent = {
       ],
     },
     {
-      title: "Astana Innovation Forum",
-      category: "Startup Forum / Central Asia",
-      description:
-        "Central Asian youth startup forum connecting young founders, investors, ecosystem leaders, and technology organizations.",
-      highlights: [
-        "560 participants",
-        "130 teams from Central Asia",
-        "105 finalists from 25 teams",
-        "1,000,000 KZT prize fund",
-      ],
-      links: [
-        {
-          label: "Instagram",
-          href: "https://www.instagram.com/astanainnovationforum?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-        },
-      ],
-    },
-    {
       title: "Project KORSO",
-      category: "AI / Agritech / Robotics",
-      description:
-        "Autonomous AI-powered drone platform for pasture monitoring, livestock tracking, and early detection of land degradation.",
-      highlights: [
-        "69 farmers and livestock owners researched",
-        "4 prototypes launched on real farms",
-        "1.5M KZT total prize funding",
-        "YOLO livestock detection trained on 6,700+ images",
-        "Approximately 96% detection accuracy",
-        "GPS tracking, NDVI analysis, autonomous route planning",
+      role: "Co-Founder & Head of Strategy",
+      period: "March 2024 – September 2025",
+      oneLiner:
+        "An autonomous AI-powered drone platform for sustainable agriculture — pasture monitoring, livestock tracking, early land degradation detection.",
+      achievements: [
+        { label: "1st place", detail: "PRO.NRG.FEST ML Challenge 2025" },
+        { label: "1st place", detail: "Alga Pitch Day" },
+        { label: "1st place", detail: "Next Startup 2025" },
+        { label: "2nd place", detail: "National Startup Contest" },
+        { label: "2nd place", detail: "SteppeRise IT StartUp Battle" },
+        { label: "Nominee", detail: "Best Use of AI in Agriculture — AICA Awards" },
       ],
-    },
-    {
-      title: "Fizmat Robotics / FIRST Autonomous Boat",
-      category: "Robotics / Computer Vision / Environment",
-      description:
-        "AI-powered autonomous boat designed to collect floating waste from water surfaces.",
-      highlights: [
-        "Robotics prototyping",
-        "Autonomous navigation",
-        "YOLO-based waste recognition",
-        "Camera-based perception and model testing",
+      metrics: [
+        { value: "69", label: "farmers / livestock owners surveyed in customer research" },
+        { value: "4", label: "real farms running pilots" },
       ],
-      links: [
-        {
-          label: "Instagram",
-          href: "https://www.instagram.com/fizmat.robotics.fll?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==",
-        },
+      bullets: [
+        "Led product strategy, customer development, and go-to-market planning.",
+        "Validated through direct field research across pasture regions with varying conditions.",
       ],
-    },
-    {
-      title: "Skylink Control Cubesat",
-      category: "Space Engineering / Communications",
-      description:
-        "Satellite system concept for uninterrupted drone connectivity.",
-      highlights: [
-        "Lightweight nylon carbon body",
-        "Built for drone communication use cases",
-        "1st place at Kazrockets Satellite Design Tournament 2025",
-        "1st place at World Space Olympiad: Investors",
+      media: [
+        { src: "/images/logos/korso.svg", alt: "KORSO / ARA logo", aspectRatio: "1/1", caption: "KORSO" },
+        { src: "/images/projects/korso-drone-1.jpg", alt: "KORSO autonomous drone on a real farm", aspectRatio: "3/2", caption: "KORSO drone — field pilot" },
       ],
+      links: [],
+      related: {
+        title: "Skylink Control Cubesat",
+        oneLiner:
+          "A satellite system for uninterrupted drone connectivity — nylon-carbon body, custom data-transfer protocol (ARDP).",
+        bullets: [
+          "Built to extend KORSO's drone communication range without dependency on local internet infrastructure.",
+        ],
+        media: [
+          { src: "/images/projects/skylink-cubesat-1.jpg", alt: "Skylink Control Cubesat render", aspectRatio: "16/10", caption: "Skylink Control Cubesat — render" },
+        ],
+      },
     },
   ],
   traction: {
@@ -368,32 +395,18 @@ const english: ProfileContent = {
       stats: ["70 teams", "200-250 participants", "1,000,000 KZT prize fund"],
     },
   ],
-  awards: [
-    {
-      category: "KORSO, AI, Startups",
-      items: [
-        "AICA Awards named after Al-Khwarizmi — nomination: Best Use of AI in Agriculture",
-        "Fibonacci International Olympiad Astana — 3rd place",
-        "WRO Regional Future Innovators — 3rd place",
-        "Alga Pitch Day — 1st place, 150,000 KZT",
-        "Next Startup 2025 — 1st place, 100,000 KZT",
-        "PRO.NRG.FEST ML Challenge 2025 — 1st place",
-        "National Startup Contest Finalists — 2nd place, 150,000 KZT",
-        "SteppeRise IT StartUp Battle — 2nd place, 100,000 KZT",
-      ],
-    },
-    {
-      category: "Robotics & Engineering",
-      items: [
-        "First Lego League Central Asia — Perseverance Award",
-        "Kazrockets Satellite Design Tournament 2025 — 1st place, 500,000 KZT; project: Skylink Control Cubesat",
-        "World Space Olympiad: Investors — 1st place, 50,000 KZT; project: Skylink Control Cubesat",
-      ],
-    },
-    {
-      category: "Recognition",
-      items: ["Pride of Republican Physics and Mathematics School 2025"],
-    },
+  recognition: [
+    { label: "1st place", detail: "Kazrockets Satellite Design Tournament 2025" },
+    { label: "1st place", detail: "World Space Olympiad: Investors" },
+    { label: "3rd place", detail: "Fibonacci International Olympiad Astana" },
+    { label: "3rd place", detail: "WRO Regional Future Innovators" },
+    { label: "Perseverance Award", detail: "First Lego League Central Asia" },
+    { label: "Recognition", detail: "Pride of Republican Physics & Mathematics School 2025" },
+  ],
+  recognitionMedia: [
+    { src: "/images/events/generativex-2026.jpg", alt: "GenerativeX 2026 at Nazarbayev University", aspectRatio: "3/2", caption: "GenerativeX 2026" },
+    { src: "/images/events/world-space-olympiad.jpg", alt: "World Space Olympiad at EXPO", aspectRatio: "3/2", caption: "World Space Olympiad" },
+    { src: "/images/events/nspm-first-scrimmage.jpg", alt: "NSPM FIRST Scrimmage 2026", aspectRatio: "3/2", caption: "NSPM FIRST Scrimmage 2026" },
   ],
   skills: [
     {
@@ -464,7 +477,7 @@ const english: ProfileContent = {
   contact: {
     title: "Let's connect",
     description:
-      "Use this link when you want the fastest read on Ramazan: who he is, what he has built, and why he is credible.",
+      "Fastest way to see what I'm building and how to reach me — email me directly or grab my resume.",
     email: "ramazan2909.com@gmail.com",
     linkedin: "https://www.linkedin.com/in/ramazan-a-97a686334/",
     resumeHref: "/Ramazan-Akhmet-Resume.pdf",

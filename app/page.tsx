@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { ContactCard } from "../components/contact-card";
 import { getProfile } from "../data/profile";
+import { MediaSlot } from "../components/media-slot";
+import { ProjectCard } from "../components/project-card";
 import { Reveal } from "../components/reveal";
 import { Section } from "../components/section";
 import { StatGrid } from "../components/stat-grid";
@@ -111,9 +113,12 @@ export default function Home() {
             <div className="space-y-4">
               <figure className="overflow-hidden rounded-2xl border border-line bg-white">
                 <div className="relative aspect-[4/5] bg-background">
+                  {/* NOTE: the real portrait lives at /public/images/ramazan-portrait.jpg,
+                      not in /public/images/portraits/. Left in place intentionally —
+                      move it only if you also update this src. */}
                   <Image
                     src="/images/ramazan-portrait.jpg"
-                    alt="Ramazan Akhmet portrait placeholder"
+                    alt="Ramazan Akhmet — 16-year-old founder from Kazakhstan"
                     fill
                     className="object-cover"
                     priority
@@ -301,50 +306,48 @@ export default function Home() {
           description="The work is presented as real products and systems, not as portfolio tiles."
           className="border-t border-line"
         >
-          <div className="grid gap-4 lg:grid-cols-2">
-            {copy.projects.map((project) => (
-              <article
-                key={project.title}
-                className="rounded-2xl border border-line bg-white p-5 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-card hover:border-foreground/10"
-              >
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <div>
-                    <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
-                      {project.category}
-                    </p>
-                    <h3 className="mt-2 font-display text-xl tracking-tight text-foreground">
-                      {project.title}
-                    </h3>
-                  </div>
-                </div>
-                <p className="mt-3 text-sm leading-7 text-muted">{project.description}</p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {project.highlights.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-line bg-background px-3 py-2 text-xs text-foreground"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
-                {project.links?.length ? (
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {project.links.map((link) => (
-                      <a
-                        key={link.label}
-                        href={link.href}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="rounded-full border border-line bg-white px-3 py-2 text-xs uppercase tracking-[0.18em] text-foreground transition-all duration-200 hover:border-foreground/30"
-                      >
-                        {link.label}
-                      </a>
-                    ))}
-                  </div>
-                ) : null}
-              </article>
-            ))}
+          <div className="relative">
+            {/* Blurred colour blobs that glow through the glass cards. */}
+            <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden rounded-3xl">
+              <div
+                className="blob"
+                style={{
+                  background: "rgba(29, 78, 216, 0.28)",
+                  width: "420px",
+                  height: "420px",
+                  top: "-80px",
+                  left: "-60px",
+                }}
+              />
+              <div
+                className="blob"
+                style={{
+                  background: "rgba(16, 185, 129, 0.18)",
+                  width: "380px",
+                  height: "380px",
+                  bottom: "-100px",
+                  right: "-40px",
+                }}
+              />
+              <div
+                className="blob"
+                style={{
+                  background: "rgba(168, 85, 247, 0.16)",
+                  width: "320px",
+                  height: "320px",
+                  top: "40%",
+                  left: "45%",
+                }}
+              />
+            </div>
+
+            <div className="relative grid items-stretch gap-5 lg:grid-cols-2">
+              {copy.projectCards.map((project, index) => (
+                <Reveal key={project.title} delay={0.04 * index} className="h-full">
+                  <ProjectCard project={project} />
+                </Reveal>
+              ))}
+            </div>
           </div>
         </Section>
 
@@ -373,52 +376,27 @@ export default function Home() {
           id="awards"
           eyebrow="Awards & recognition"
           title="Recognition"
-          description="A concise scan of the most relevant placements and recognition."
+          description="Personal placements from olympiads and competitions. Project-specific awards live on each project card above."
           className="border-t border-line"
         >
-          <div className="grid gap-4 lg:grid-cols-3">
-            {copy.awards.map((group) => (
-              <article
-                key={group.category}
-                className="rounded-2xl border border-line bg-white p-5 transition-all duration-300 hover:shadow-soft hover:border-foreground/15"
+          <div className="flex flex-wrap gap-2">
+            {copy.recognition.map((award) => (
+              <span
+                key={`${award.label}-${award.detail}`}
+                className="glass-chip inline-flex items-center gap-2 rounded-full px-3.5 py-2 text-sm text-foreground"
               >
-                <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent">
-                  {group.category}
-                </p>
-                <ul className="mt-4 space-y-3">
-                  {group.items.map((item) => (
-                    <li key={item} className="text-sm leading-6 text-muted">
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </article>
+                <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+                  {award.label}
+                </span>
+                <span className="text-muted">{award.detail}</span>
+              </span>
             ))}
           </div>
 
-          <div className="mt-6 overflow-hidden rounded-2xl border border-line bg-white">
-            <div className="grid gap-4 p-5 sm:grid-cols-2 lg:grid-cols-3">
-              <article className="rounded-xl border border-line bg-background p-4">
-                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
-                  Event visual
-                </p>
-                <p className="mt-2 text-sm leading-6 text-foreground">GenerativeX 2026</p>
-              </article>
-              <article className="rounded-xl border border-line bg-background p-4">
-                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
-                  Event visual
-                </p>
-                <p className="mt-2 text-sm leading-6 text-foreground">World Space Olympiad</p>
-              </article>
-              <article className="rounded-xl border border-line bg-background p-4">
-                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">
-                  Education recognition
-                </p>
-                <p className="mt-2 text-sm leading-6 text-foreground">
-                  {copy.education.school} · {copy.education.date}
-                </p>
-              </article>
-            </div>
+          <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {copy.recognitionMedia.map((media) => (
+              <MediaSlot key={media.src ?? media.alt} {...media} />
+            ))}
           </div>
         </Section>
 
